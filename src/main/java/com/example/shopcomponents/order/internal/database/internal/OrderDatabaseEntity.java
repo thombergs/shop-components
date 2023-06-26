@@ -5,7 +5,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
-@Table("ORDER")
+@Table("ORDERS")
 record OrderDatabaseEntity(
         @Id Long id,
         Long userId,

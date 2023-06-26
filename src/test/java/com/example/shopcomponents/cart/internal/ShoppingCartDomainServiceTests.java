@@ -6,6 +6,7 @@ import com.example.shopcomponents.cart.api.ShoppingCartService;
 import com.example.shopcomponents.cart.api.UserId;
 import com.example.shopcomponents.cart.internal.database.api.ShoppingCartDatabase;
 import com.example.shopcomponents.cart.internal.eventpublisher.internal.SpringShoppingCartEventPublisher;
+import com.example.shopcomponents.events.CheckoutEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
@@ -82,7 +83,7 @@ class ShoppingCartDomainServiceTests {
         ShoppingCart cart = createShoppingCart();
 
         shoppingCartService.checkout(USER_ID);
-        assertThat(applicationEvents.stream(SpringShoppingCartEventPublisher.CheckoutEvent.class)
+        assertThat(applicationEvents.stream(CheckoutEvent.class)
                 .count()).isEqualTo(1);
     }
 
