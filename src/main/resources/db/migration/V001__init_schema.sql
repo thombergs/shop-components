@@ -20,3 +20,22 @@ create table shopping_cart_article
     constraint fk_article foreign key (article_id) references article (id),
     constraint fk_shopping_cart foreign key (shopping_cart_id) references shopping_cart (id)
 );
+
+create table order
+(
+    id         integer auto_increment,
+    user_id    integer,
+    order_date timestamp,
+    primary key (id)
+);
+
+create table order_item
+(
+    id             integer auto_increment,
+    order_id       integer,
+    article_id     integer,
+    amount         integer,
+    price_in_cents integer,
+    constraint fk_article foreign key (article_id) references article (id),
+    constraint fk_shopping_cart foreign key (order_id) references order (id)
+);

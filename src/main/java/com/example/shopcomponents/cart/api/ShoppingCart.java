@@ -40,10 +40,6 @@ public class ShoppingCart {
         return new ShoppingCart(id, userId, items);
     }
 
-    public boolean hasId() {
-        return !ShoppingCartId.NONE.equals(this.id);
-    }
-
     public ShoppingCartId getId() {
         return id;
     }
@@ -53,6 +49,7 @@ public class ShoppingCart {
     }
 
     public void addItem(ShoppingCartItem item) {
+        requireNonNull(item);
 
         // random business validation
         if (this.shoppingCartItems.size() >= 10) {
@@ -67,6 +64,7 @@ public class ShoppingCart {
     }
 
     public void removeItem(ArticleId articleId) {
+        requireNonNull(articleId);
         this.shoppingCartItems.remove(articleId);
     }
 

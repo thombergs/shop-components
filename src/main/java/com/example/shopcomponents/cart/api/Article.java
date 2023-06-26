@@ -1,6 +1,5 @@
 package com.example.shopcomponents.cart.api;
-
-import org.springframework.data.relational.core.mapping.Table;
+import static java.util.Objects.requireNonNull;
 
 public class Article {
 
@@ -11,6 +10,9 @@ public class Article {
     private Article(ArticleId id,
                     String name,
                     long priceInCents) {
+        requireNonNull(id);
+        requireNonNull(name);
+        requireNonNull(priceInCents);
         this.id = id;
         this.name = name;
         this.priceInCents = priceInCents;
